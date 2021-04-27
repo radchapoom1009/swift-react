@@ -13,18 +13,24 @@ class App extends Component {
     };
   }
 
-  onClick = (button) => {
-    console.log("test xx");
-    if (button === "=") {
-      this.calculate();
-    } else if (button === "C") {
+  onClick = (e) => {
+    try {
+      const button = e.target.name
+      if (button === "=") {
+        this.calculate();
+      } else if (button === "C") {
+        this.reset();
+      } else if (button === "CE") {
+        this.backspace();
+      } else {
+        const newResult = this.state.result + button
+        
+        this.setState({
+          result: newResult,
+        });
+      }
+    } catch {
       this.reset();
-    } else if (button === "CE") {
-      this.backspace();
-    } else {
-      this.setState({
-        result: this.state.result + button,
-      });
     }
   };
 
@@ -42,9 +48,7 @@ class App extends Component {
         result: (eval(checkResult) || "") + "",
       });
     } catch (e) {
-      this.setState({
-        result: "error",
-      });
+      this.reset()
     }
   };
 

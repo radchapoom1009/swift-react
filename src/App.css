@@ -15,12 +15,13 @@
 }
 
 .button {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 400px;
+    height: 300px;
     background-color: #bbb;
 }
 
-button {
-    width: 25%;
-    height: 60px;
-    font-size: 30px;
+.button button {
+    font-size: 20px;
 }

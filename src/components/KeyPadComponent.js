@@ -1,79 +1,89 @@
-import React, { Component } from "react";
-class KeyPadComponent extends Component {
-  render() {
-    return (
-      <div className="button">
-        <button name="(" onClick={(e) => this.props.onClick(e.target.name)}>
-          ({" "}
-        </button>{" "}
-        <button name=")" onClick={(e) => this.props.onClick(e.target.name)}>
-          ){" "}
-        </button>{" "}
-        <button name="CE" onClick={(e) => this.props.onClick(e.target.name)}>
-          CE{" "}
-        </button>{" "}
-        <button name="C" onClick={(e) => this.props.onClick(e.target.name)}>
-          C{" "}
-        </button>{" "}
-        <br />
-        <button name="1" onClick={(e) => this.props.onClick(e.target.name)}>
-          1{" "}
-        </button>{" "}
-        <button name="2" onClick={(e) => this.props.onClick(e.target.name)}>
-          2{" "}
-        </button>{" "}
-        <button name="3" onClick={(e) => this.props.onClick(e.target.name)}>
-          3{" "}
-        </button>{" "}
-        <button name="+" onClick={(e) => this.props.onClick(e.target.name)}>
-          +
-        </button>{" "}
-        <br />
-        <button name="4" onClick={(e) => this.props.onClick(e.target.name)}>
-          4{" "}
-        </button>{" "}
-        <button name="5" onClick={(e) => this.props.onClick(e.target.name)}>
-          5{" "}
-        </button>{" "}
-        <button name="6" onClick={(e) => this.props.onClick(e.target.name)}>
-          6{" "}
-        </button>{" "}
-        <button name="-" onClick={(e) => this.props.onClick(e.target.name)}>
-          -
-        </button>{" "}
-        <br />
-        <button name="7" onClick={(e) => this.props.onClick(e.target.name)}>
-          7{" "}
-        </button>{" "}
-        <button name="8" onClick={(e) => this.props.onClick(e.target.name)}>
-          8{" "}
-        </button>{" "}
-        <button name="9" onClick={(e) => this.props.onClick(e.target.name)}>
-          9{" "}
-        </button>{" "}
-        <button name="*" onClick={(e) => this.props.onClick(e.target.name)}>
-          x{" "}
-        </button>{" "}
-        <br />
-        <button name="." onClick={(e) => this.props.onClick(e.target.name)}>
-          .{" "}
-        </button>{" "}
-        <button name="0" onClick={(e) => this.props.onClick(e.target.name)}>
-          0{" "}
-        </button>{" "}
-        <button name="=" onClick={(e) => this.props.onClick(e.target.name)}>
-          {" "}
-          ={" "}
-        </button>{" "}
-        <button name="/" onClick={(e) => this.props.onClick(e.target.name)}>
-          {" "}
-          ÷
-        </button>{" "}
-        <br />
-      </div>
-    );
-  }
-}
-export default KeyPadComponent;
+import React from "react";
+import { KeyButton } from './KeyButtonComponent';
 
-// Test
+const keys = [
+  {
+    name: '(',
+    label: '(',
+  },
+  {
+    name: ')',
+    label: ')',
+  },
+  {
+    name: 'CE',
+    label: 'CE',
+  },
+  {
+    name: 'C',
+    label: 'C',
+  },
+  {
+    name: '1',
+    label: '1',
+  },
+  {
+    name: '2',
+    label: '2',
+  },
+  {
+    name: '3',
+    label: '3',
+  },
+  {
+    name: '4',
+    label: '4',
+  },
+  {
+    name: '5',
+    label: '5',
+  },
+  {
+    name: '6',
+    label: '6',
+  },
+  {
+    name: '7',
+    label: '7',
+  },
+  {
+    name: '8',
+    label: '8',
+  },
+  {
+    name: '9',
+    label: '9',
+  },
+  {
+    name: '0',
+    label: '0',
+  },
+  {
+    name: '*',
+    label: 'X',
+  },
+  {
+    name: '.',
+    label: '.',
+  },
+  {
+    name: '=',
+    label: '=',
+  },
+  {
+    name: '/',
+    label: '÷',
+  },
+];
+
+export const KeyPadComponent = (props) => {
+  return (
+    <div className="button">
+      { keys.map((key) => {
+        return <KeyButton key={key.name} name={key.label} eventName={key.name} onClick={props.onClick} />
+      }) }
+    </div>
+  );
+}
+
+export default KeyPadComponent;
